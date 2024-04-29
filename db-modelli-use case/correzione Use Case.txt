@@ -1,0 +1,51 @@
+utente:
+	-visualizzazione dei riepiloghi
+	-(durante la fase di registrazione deve inserire il priprio domicilio)
+	-(e anche la carta di credito)
+
+
+monitorare servizio:
+	-
+
+
+
+controllare servizio: 
+ -manutenzione [ ins new bici, canc, 
+
+
+
+
+
+-admin:
+	- gestisce il monitoraggio: stampe di riepilogo (tutte ope fatte da un utente, ope per 	stazione, posizione tutte biciclette noleggiate, biciclette non riconsegnate dal giorno
+	prima con la loro ultima posizione registrata (usare GPS ogni ), visualizza 
+	le biciclette che fanno manutenzione()   ) 
+
+
+-utente non registrato
+	-si registra
+ 	-visualizza la mappa
+
+-utente registrato: 
+	-visualizza la mappa
+	-ope bici
+	-ecc...
+
+
+
+-mettere anche calcolo tariffa in base al tempo di utilizzoemai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
