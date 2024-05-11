@@ -66,7 +66,7 @@
 <div class="container">
     <div>
         <button class="button button-login-cliente" onclick="loginCliente()">Login Cliente, così puoi usufruire del servizio!</button>
-        <button class="button button-login-dipendente" onclick="loginDipendente()">Login Dipendente</button>
+        <br><button class="button button-login-dipendente" onclick="loginDipendente()">Login Dipendente</button>
     </div>
 </div>
 

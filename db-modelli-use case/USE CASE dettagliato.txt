@@ -1,0 +1,44 @@
+Ecco una revisione dei casi d'uso con una descrizione più dettagliata:
+
+ Utente:
+
+1. Visualizzazione dei riepiloghi: Gli utenti possono visualizzare i riepiloghi delle loro operazioni, inclusi noleggi e riconsegne di biciclette.
+
+2. Registrazione: Durante la registrazione, gli utenti devono fornire informazioni personali, inclusi il proprio domicilio e i dettagli della carta di credito per il pagamento dei servizi.
+
+3. Visualizzazione della mappa: Gli utenti possono accedere alla mappa interattiva che mostra la posizione delle stazioni di noleggio delle biciclette.
+
+4. Operazioni sulla bicicletta: Gli utenti registrati possono effettuare operazioni come noleggiare una bicicletta, riconsegnarla e controllare lo stato della bicicletta.
+
+5. Calcolo della tariffa: Il sistema calcola automaticamente la tariffa in base al tempo di utilizzo effettivo delle biciclette.
+
+ Monitoraggio del servizio:
+
+1. Gestione del monitoraggio: Gli amministratori possono monitorare il servizio attraverso diverse funzionalità, tra cui:
+   - Visualizzazione di riepiloghi delle operazioni fatte da un utente.
+   - Visualizzazione delle operazioni per stazione.
+   - Visualizzazione della posizione di tutte le biciclette noleggiate.
+   - Visualizzazione delle biciclette non riconsegnate con la loro ultima posizione registrata.
+   - Identificazione delle biciclette che richiedono manutenzione.
+
+ Controllo del servizio:
+
+1. Manutenzione delle biciclette: Gli amministratori possono gestire la manutenzione delle biciclette, inclusi:
+   - Inserimento di nuove biciclette nel sistema.
+   - Cancellazione delle biciclette non più utilizzabili.
+   - Identificazione e gestione delle biciclette che richiedono manutenzione.
+
+ Utente non registrato:
+
+1. Registrazione: Gli utenti non registrati possono registrarsi al sistema fornendo le informazioni richieste.
+
+2. Visualizzazione della mappa: Gli utenti non registrati possono accedere alla mappa per visualizzare le stazioni di noleggio delle biciclette.
+
+Questo aggiornamento fornisce una panoramica più dettagliata delle funzionalità e delle azioni disponibili per ciascun tipo di utente e per gli amministratori del servizio.
+
+
+
+
+
+
+

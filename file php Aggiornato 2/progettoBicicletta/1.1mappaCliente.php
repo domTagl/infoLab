@@ -14,17 +14,18 @@
 <body>
     
 <script>
-    var map; // Dichiarazione globale della variabile map
+    var map;
+    var selectedStation = null; // Variabile per salvare il nome della stazione selezionata
 
-    function inizializzaMappa() {
-        // Imposta le opzioni della mappa
+    function initializeMap() {
+        // Impostazioni della mappa
         var options = {
-            center: [45.4642, 9.1900], // Coordinate di Milano, per esempio
-            zoom: 12 // Livello di zoom della mappa
+            center: [45.4642, 9.1900], // Coordinate di Milano
+            zoom: 12
         };
 
-        // Crea una nuova mappa nell'elemento con id "map"
-        map = L.map('map').setView([45.4642, 9.1900], 12); // Assegna a map la nuova mappa creata
+        // Crea la mappa
+        map = L.map('map').setView([45.4642, 9.1900], 12);
 
         // Aggiunge il layer della mappa
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -32,19 +33,20 @@
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        aggiungiTagStazioni();
+        // Aggiunge i marker delle stazioni
+        addStationMarkers();
     }
 
-    function aggiungiTagStazioni(){
-        console.log("aggiungiTagStazioni");
-        $.post("php/1.1getStazioneMappa.php", { }, function(stazioni) {
-            stazioni.forEach(function(stazione) {
-                var marker = L.marker([stazione.lat, stazione.longi]).addTo(map);
+    function addStationMarkers() {
+        console.log("addStationMarkers");
+        $.post("php/1.1getStazioneMappa.php", {}, function (stazioni) {
+            stazioni.forEach(function (stazione) {
+                var marker = L.marker([stazione.longi, stazione.lat]).addTo(map);
                 marker.bindPopup("<b>" + stazione.nome + "</b><br>" + stazione.altro);
 
-                marker.on('click', function(e){
-                    var nomeStazione = stazione.nome;
-                    $.post("php/visualizzaInfoStazione.php", { nome: nomeStazione }, function(data) {
+                marker.on('click', function (e) {
+                    selectedStation = stazione.nome; // Salva il nome della stazione selezionata
+                    $.post("php/visualizzaInfoStazione.php", { nome: selectedStation }, function (data) {
                         $("#infoStazione").html(data);
                     });
                 });
@@ -53,19 +55,28 @@
         }, 'json');
     }
 
-
-
-
     function effettuaPrenotazione() {
-        window.location.href = "1.2.3effettuaPrenotazione.php";
+        if (selectedStation) {
+            window.location.href = "1.3.1effettuaPrenotazione.php?stazione=" + encodeURIComponent(selectedStation);
+        } else {
+            alert("Seleziona prima una stazione cliccando su un marker sulla mappa.");
+        }
     }
+
     function visualizzaStorico() {
         window.location.href = "1.2.1storicoNoleggi.php";
     }
+
     function aggiornaProfilo() {
-        window.location.href = "aggiornaProfilo.php";
+        window.location.href = "1.2.2aggiornaProfilo.php";
     }
+
+    // Inizializza la mappa quando il DOM è completamente caricato
+    document.addEventListener('DOMContentLoaded', function () {
+        initializeMap();
+    });
 </script>
+
 
 
 
@@ -75,7 +86,7 @@
 
 <div class="container">
     <div>
-        <button onclick="effettuaPrenotazione()">Effettuare una prenotazione</button><br>
+        <button onclick="effettuaPrenotazione()">Scegli una stazione ed effettuare una prenotazione</button><br>
         <button onclick="visualizzaStorico()">Visualizzare lo storico dei noleggi effettuati</button><br>
         <button onclick="aggiornaProfilo()">Aggiornare le informazioni del profilo utente</button>
     </div>

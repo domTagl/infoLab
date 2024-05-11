@@ -33,7 +33,7 @@
 <input type="password" id="password" name="password" required><br><br>
 <button type="button" onclick="controlloCredenziali($('#email').val(), $('#password').val())">Accedi</button>
 
-<button type="button" onclick="registra()">Registrati</button>
+<br><button type="button" onclick="registra()">Registrati</button>
 
 <p id="responseMessage"></p> <!-- Aggiunto un paragrafo per visualizzare messaggi di risposta -->
 </div>
