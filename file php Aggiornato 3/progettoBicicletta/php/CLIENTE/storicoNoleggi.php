@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 $ip = "localhost";
 $root = "root";
 $psw = "";
-$nome = "dbpreverifica";
+$nome = "biciclette";
 
 $sql = "SELECT operazione.*, transizioni.importo, transizioni.motivo FROM operazione LEFT JOIN transizioni ON operazione.ID = transizioni.IDcliente WHERE operazione.IDcliente = ?";
 $stmt = $conn->prepare($sql);

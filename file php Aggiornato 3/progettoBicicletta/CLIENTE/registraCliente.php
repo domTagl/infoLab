@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registra Cliente</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -12,12 +12,13 @@
 <script>
 
     function controlloCredenziali(nome, cognome, email, numTel, password, via, citta, cap, provincia) {
-        $.post("php/gestioneRegistraCliente.php", { nome: nome, cognome: cognome, 
+        $.post("../php/CLIENTE/registraCliente.php", { nome: nome, cognome: cognome, 
             email: email, numTel: numTel, password: password, via: via, citta: citta, cap: cap, provincia: provincia}, function(data) {
             console.log(data);
             if (data.stato === "successo") {
                 $("#responseMessage").text("Registrazione effettuata con successo.");
-                window.location.href = "1.1mappaCliente.php"; 
+                console.log("prenotazione_bici/mappaCliente.php");
+                window.location.href = "prenotazione_bici/mappaCliente.php"; 
             } else {
                 $("#responseMessage").text("Si è verificato un errore durante la registrazione: " + data.messaggio);
             }
@@ -25,7 +26,7 @@
     };
 
     function indietro() {
-        window.location.href = "1.0loginCliente.php"; 
+        window.location.href = "loginCliente.php"; 
     };
 </script>
 

@@ -9,11 +9,23 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    
+
 <script>
+
+    //controllo sessione
+    $( document ).ready(function() {
+        $.post("../../session/controlloSessioneCliente.php", {}, function (data) {
+            console.log(data);
+            if(data == 404){
+                window.location.href = "../../index.php"; 
+            }
+        });
+    });
+
+
     var map;
     var selectedStation = null; // Variabile per salvare il nome della stazione selezionata
 
@@ -25,7 +37,7 @@
         };
 
         // Crea la mappa
-        map = L.map('map').setView([45.4642, 9.1900], 12);
+        map = L.map('map', options);
 
         // Aggiunge il layer della mappa
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -39,14 +51,14 @@
 
     function addStationMarkers() {
         console.log("addStationMarkers");
-        $.post("php/1.1getStazioneMappa.php", {}, function (stazioni) {
+        $.post("../../php/getStazioneMappa.php", {}, function (stazioni) {
             stazioni.forEach(function (stazione) {
-                var marker = L.marker([stazione.longi, stazione.lat]).addTo(map);
+                var marker = L.marker([stazione.lat, stazione.longi]).addTo(map);
                 marker.bindPopup("<b>" + stazione.nome + "</b><br>" + stazione.altro);
 
                 marker.on('click', function (e) {
                     selectedStation = stazione.nome; // Salva il nome della stazione selezionata
-                    $.post("php/visualizzaInfoStazione.php", { nome: selectedStation }, function (data) {
+                    $.post("../../php/visualizzaInfoStazione.php", { nome: selectedStation }, function (data) {
                         $("#infoStazione").html(data);
                     });
                 });
@@ -57,18 +69,18 @@
 
     function effettuaPrenotazione() {
         if (selectedStation) {
-            window.location.href = "1.3.1effettuaPrenotazione.php?stazione=" + encodeURIComponent(selectedStation);
+            window.location.href = "effettuaPrenotazione.php?stazione=" + encodeURIComponent(selectedStation);
         } else {
             alert("Seleziona prima una stazione cliccando su un marker sulla mappa.");
         }
     }
 
     function visualizzaStorico() {
-        window.location.href = "1.2.1storicoNoleggi.php";
+        window.location.href = "../personali/storicoNoleggi.php";
     }
 
     function aggiornaProfilo() {
-        window.location.href = "1.2.2aggiornaProfilo.php";
+        window.location.href = "../personali/aggiornaProfilo.php";
     }
 
     // Inizializza la mappa quando il DOM è completamente caricato
@@ -76,9 +88,6 @@
         initializeMap();
     });
 </script>
-
-
-
 
 <h2>Dashboard Cliente</h2>
 
@@ -91,13 +100,6 @@
         <button onclick="aggiornaProfilo()">Aggiornare le informazioni del profilo utente</button>
     </div>
 </div>
-
-<script>
-    // Inizializza la mappa dopo che il DOM è completamente caricato
-    document.addEventListener('DOMContentLoaded', function () {
-        inizializzaMappa();
-    });
-</script>
 
 <div class="container">
     <div id="infoStazione">

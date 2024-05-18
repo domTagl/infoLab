@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storico Noleggi</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     
 <script>
     $(document).ready(function(){
+        $.post("session/controlloSessioneCliente.php", {}, function (data) {
+            if(data == 404){
+                window.location.href = "../../index.php"; 
+            }
+        });
+
         // Effettua una richiesta AJAX per ottenere lo storico dei noleggi del cliente
         $.ajax({
             url: "ajax/storicoNoleggi.php",
@@ -36,7 +43,7 @@
 </script>
 
 
-
+<div class="container">
 <h2>Storico Noleggi</h2>
 
 <table>
@@ -53,6 +60,6 @@
         <!-- Qui verranno inseriti dinamicamente i noleggi -->
     </tbody>
 </table>
-
+</div>
 </body>
 </html>

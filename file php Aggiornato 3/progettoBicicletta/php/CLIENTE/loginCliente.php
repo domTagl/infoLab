@@ -28,6 +28,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // Utente trovato nel database
         $utente = $result->fetch_assoc();
         $_SESSION['utente'] = $utente;
+        $_SESSION['IDutente'] = $utente['ID'];
 
         $json = new StatoMessaggio();
         $json->stato = "successo";

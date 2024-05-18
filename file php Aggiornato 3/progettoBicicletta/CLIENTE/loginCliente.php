@@ -2,14 +2,14 @@
 <html lang="it">
 <head>
     <title>Login Cliente</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
     function controlloCredenziali(email, password) {
-        $.post("php/gestioneLoginCliente.php", { email: email, password: password }, function(data) {
+        $.post("../php/CLIENTE/loginCliente.php", { email: email, password: password }, function(data) {
             console.log(data);
             if (data.stato == "successo") {
                 $("#responseMessage").text("Login effettuato con successo.");
@@ -21,7 +21,7 @@
     };
         
     function registra() {
-        window.location.href = "1.0registraCliente.php"; 
+        window.location.href = "registraCliente.php"; 
     };
 </script>
 <div class="container">
