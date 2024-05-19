@@ -13,7 +13,7 @@
             console.log(data);
             if (data.stato == "successo") {
                 $("#responseMessage").text("Login effettuato con successo.");
-                window.location.href = "1.1mappaCliente.php";
+                window.location.href = "prenotazione_bici/mappaCliente.php";
             } else {
                 $("#responseMessage").text("Si è verificato un errore durante il login: " + data.messaggio);
             }

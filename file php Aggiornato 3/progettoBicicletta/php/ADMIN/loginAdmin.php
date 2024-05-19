@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 
-include 'StatoMessaggio.php'; // Assumo che questo file contenga la definizione della classe StatoMessaggio
+include 'StatoMessaggio.php'; 
 
 if (!isset($_SESSION)) {
     session_start();
@@ -11,18 +11,19 @@ if (!isset($_SESSION)) {
 $ip = "localhost";
 $root = "root";
 $psw = "";
-$nome = "dbpreverifica";
+$nome = "biciclette";
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $Password = md5($password);
 
     // Connessione al database
     $mysqli = new mysqli($ip, $root, $psw, $nome);
 
     // Controllo credenziali dell'admin
     $stmt = $mysqli->prepare("SELECT * FROM `utente` WHERE username=? AND password=? AND isAdmin=1");
-    $stmt->bind_param("ss", $username, $password);
+    $stmt->bind_param("ss", $username, $Password);
     $stmt->execute();
     $result = $stmt->get_result();
 
