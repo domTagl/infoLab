@@ -22,11 +22,11 @@ if(isset($_GET["stazione"])) {
     if ($resultStazione->num_rows > 0) {
         echo "SEI NELLA STAZIONE: " . htmlspecialchars($nomeStazione) . "<br><br>";
 
-        echo "Codice Carta Comune (per prenotare una bici):<br>";
-        echo "<input type=\"text\" id=\"codiceCartaComune\" name=\"codiceCartaComune\" required><br><br>";
-        echo "<br>Inserisci RFID della bici (per restituire):<br>";
-        echo "<input type=\"text\" id=\"RFID\" name=\"RFID\" required><br><br>";
-        echo "<table>";
+        // echo "Codice Carta Comune (per prenotare una bici):<br>";
+        // echo "<input type=\"text\" id=\"codiceCartaComune\" name=\"codiceCartaComune\" required><br><br>";
+        // echo "<br>Inserisci RFID della bici (per restituire):<br>";
+        // echo "<input type=\"text\" id=\"RFID\" name=\"RFID\" required><br><br>";
+        // echo "<table>";
 
         $counter = 0;
         while ($row = $resultStazione->fetch_assoc()) {
@@ -36,12 +36,12 @@ if(isset($_GET["stazione"])) {
             echo "<p><strong>SLOT numero $counter</strong></p>";
             echo "<p><strong>Stato Slot:</strong> " . htmlspecialchars($row["stato"]) . "</p>";
             if ($row["stato"] == "disponibile") {
-                echo "<button class=\"prenotaBici\" value=\"" . htmlspecialchars($row["RFID"]) . "\">Prenota la Bicicletta</button>";
+                
             } elseif ($row["stato"] == "Manutenzione") {
                 echo "<p><strong>Bicicletta in Manutenzione</strong></p>";
             } elseif ($row["stato"] == "noleggiata") {
                 echo "<p><strong>Stato Slot:</strong> vuoto - bici non disponibile - - parcheggia la tua bici - </p>";
-                echo "<button class=\"restituisciBici\" >Restitisci la Bicicletta</button>";
+
             }
             else{
                 echo $row["stato"];
@@ -59,7 +59,7 @@ if(isset($_GET["stazione"])) {
             echo "<td>";
             echo "<p><strong>SLOT numero $counter</strong></p>";
             echo "<p><strong>Stato Slot:</strong> vuoto - bici non disponibile - - parcheggia la tua bici -</p>";
-            echo "<button class=\"restituisciBici\" >Restitisci la Bicicletta</button>";
+
             echo "</td>";
             echo "</tr>";
         }

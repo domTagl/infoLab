@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 19, 2024 alle 00:00
+-- Creato il: Mag 21, 2024 alle 09:42
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bicicletta` (
   `ID` int(11) NOT NULL,
-  `IDstazione` int(11) NOT NULL,
+  `IDstazione` int(11) DEFAULT NULL,
   `RFID` int(11) NOT NULL,
   `longi` float NOT NULL,
   `lat` float NOT NULL,
-  `stato` varchar(32) NOT NULL,
+  `stato` enum('disponibile','Manutenzione','noleggiata') NOT NULL,
   `metri` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -42,63 +42,63 @@ CREATE TABLE `bicicletta` (
 --
 
 INSERT INTO `bicicletta` (`ID`, `IDstazione`, `RFID`, `longi`, `lat`, `stato`, `metri`) VALUES
-(1, 1, 123456, 9.19, 45.4642, 'disponibile', 0),
-(2, 1, 123457, 9.1901, 45.4643, 'disponibile', 0),
+(1, 1, 123456, 9.1899, 45.4641, 'noleggiata', 11420),
+(2, 1, 123457, 9.1851, 45.4626, 'noleggiata', 10405),
 (3, 2, 123458, 9.185, 45.4668, 'Manutenzione', 0),
-(4, 2, 123459, 9.1851, 45.4669, 'disponibile', 0),
-(5, 3, 123460, 9.2343, 45.4824, 'noleggiata', 0),
-(6, 3, 123461, 9.2344, 45.4825, 'noleggiata', 1000),
+(4, 2, 123459, 9.1844, 45.4696, 'disponibile', 9385),
+(5, 3, 123460, 9.2329, 45.4816, 'noleggiata', 10640),
+(6, 3, 123461, 9.2407, 45.4799, 'noleggiata', 11510),
 (7, 4, 123462, 9.1905, 45.4654, 'disponibile', 0),
 (8, 4, 123463, 9.1906, 45.4655, 'disponibile', 0),
 (13, 1, 1034560890, 45.4634, 9.1897, 'disponibile', 200.5),
 (14, 1, 2147483557, 45.4641, 9.1895, 'disponibile', 180.2),
-(15, 1, 147485547, 45.4649, 9.1889, 'noleggiata', 150.8),
-(16, 1, 147583647, 45.4637, 9.1878, 'noleggiata', 130.1),
+(15, 1, 147485547, 45.4693, 9.1927, 'noleggiata', 10106.8),
+(16, 1, 147583647, 45.4631, 9.1895, 'noleggiata', 10784.1),
 (17, 2, 2140483607, 45.4643, 9.1876, 'disponibile', 220.3),
-(18, 2, 2047480647, 45.4639, 9.1884, 'noleggiata', 195.7),
+(18, 2, 2047480647, 45.4629, 9.1881, 'noleggiata', 10758.7),
 (19, 2, 2047483607, 45.4648, 9.1892, 'disponibile', 210.6),
 (20, 2, 2140483640, 45.4642, 9.1899, 'disponibile', 190.4),
-(21, 3, 147403647, 45.4646, 9.1903, 'noleggiata', 170.9),
-(22, 3, 123456789, 45.4644, 9.1901, 'disponibile', 240.8),
+(21, 3, 147403647, 45.4621, 9.1913, 'noleggiata', 10766.9),
+(22, 3, 1999999, 45.4644, 9.1901, 'disponibile', 240.8),
 (23, 3, 2140483640, 45.4638, 9.1896, 'disponibile', 260.5),
-(24, 3, 147003647, 45.4635, 9.1905, 'noleggiata', 180.3),
+(24, 3, 147003647, 45.4608, 9.1886, 'noleggiata', 10246.3),
 (25, 4, 140483047, 45.4633, 9.1912, 'disponibile', 290.7),
-(26, 4, 147083640, 45.464, 9.1919, 'noleggiata', 270.2),
+(26, 4, 147083640, 45.4605, 9.1902, 'noleggiata', 10393.2),
 (27, 4, 2107483047, 45.4647, 9.1926, 'disponibile', 310.9),
 (28, 4, 2100483047, 45.4645, 9.1932, 'disponibile', 280.6),
 (30, 1, 1234567890, 45.4634, 9.1897, 'disponibile', 200.5),
-(31, 1, 2147483647, 45.4641, 9.1895, 'Disponibile', 180.2),
-(32, 1, 2147483647, 45.4649, 9.1889, 'noleggiata', 150.8),
-(33, 1, 2147483647, 45.4637, 9.1878, 'noleggiata', 130.1),
+(31, 1, 2147483647, 45.4641, 9.1895, 'disponibile', 180.2),
+(32, 1, 2147483647, 45.4703, 9.1912, 'noleggiata', 10750.8),
+(33, 1, 2147483647, 45.4671, 9.1889, 'noleggiata', 10592.1),
 (34, 2, 2147483647, 45.4643, 9.1876, 'disponibile', 220.3),
-(35, 2, 2147483647, 45.4639, 9.1884, 'noleggiata', 195.7),
+(35, 2, 2147483647, 45.4635, 9.1855, 'noleggiata', 11047.7),
 (36, 2, 2147483647, 45.4648, 9.1892, 'disponibile', 210.6),
 (37, 2, 2147483647, 45.4642, 9.1899, 'disponibile', 190.4),
-(38, 3, 2147483647, 45.4646, 9.1903, 'noleggiata', 170.9),
-(39, 3, 123456789, 45.4644, 9.1901, 'disponibile', 240.8),
+(38, 3, 2147483647, 45.4638, 9.1932, 'noleggiata', 10716.9),
+(39, 3, 123456789, 45.4629, 9.188, 'noleggiata', 10389.8),
 (40, 3, 2147483647, 45.4638, 9.1896, 'disponibile', 260.5),
-(41, 3, 2147483647, 45.4635, 9.1905, 'noleggiata', 180.3),
+(41, 3, 2147483647, 45.4614, 9.188, 'noleggiata', 10506.3),
 (42, 2, 2147483647, 45.4633, 9.1912, 'disponibile', 290.7),
-(43, 2, 2147483647, 45.464, 9.1919, 'noleggiata', 270.2),
+(43, 2, 2147483647, 45.4683, 9.1898, 'noleggiata', 10758.2),
 (44, 2, 2147483647, 45.4647, 9.1926, 'disponibile', 310.9),
 (45, 1, 2147483647, 45.4645, 9.1932, 'disponibile', 280.6),
-(46, 1, 2147483647, 45.4639, 9.1925, 'noleggiata', 230.4),
+(46, 1, 2147483647, 45.4645, 9.1941, 'noleggiata', 10343.4),
 (47, 1, 2109876543, 45.4634, 9.1918, 'disponibile', 330.7),
 (48, 1, 1098765432, 45.4641, 9.1911, 'disponibile', 300.2),
-(49, 1, 987654321, 45.4648, 9.1903, 'noleggiata', 260.9),
+(49, 1, 987654321, 45.4627, 9.1887, 'noleggiata', 10314.9),
 (50, 1, 2147483647, 45.4643, 9.1898, 'disponibile', 350.5),
-(51, 1, 2147483647, 45.4637, 9.1904, 'noleggiata', 320.8),
+(51, 1, 2147483647, 45.4627, 9.1905, 'noleggiata', 10289.8),
 (52, 1, 2147483647, 45.4645, 9.191, 'disponibile', 370.3),
 (53, 1, 2147483647, 45.4639, 9.1916, 'disponibile', 340.6),
-(54, 1, 2147483647, 45.4642, 9.1923, 'noleggiata', 290.2),
+(54, 1, 2147483647, 45.4654, 9.1919, 'noleggiata', 10782.2),
 (55, 1, 2147483647, 45.4647, 9.1928, 'disponibile', 390.8),
-(56, 1, 2147483647, 45.4641, 9.1935, 'Disponibile', 360.4),
+(56, 1, 2147483647, 45.4641, 9.1935, 'disponibile', 360.4),
 (57, 1, 923456, 9.19, 45.4642, 'disponibile', 0),
 (58, 1, 923457, 9.1901, 45.4643, 'disponibile', 0),
 (59, 1, 923458, 9.185, 45.4668, 'Manutenzione', 0),
 (60, 1, 923459, 9.1851, 45.4669, 'disponibile', 0),
 (61, 1, 923460, 9.2343, 45.4824, 'disponibile', 0),
-(62, 1, 923461, 9.2344, 45.4825, 'noleggiata', 1000),
+(62, 1, 923461, 9.2343, 45.4805, 'noleggiata', 11734),
 (63, 1, 923462, 9.1905, 45.4654, 'disponibile', 0),
 (64, 1, 923463, 9.1906, 45.4655, 'disponibile', 0),
 (65, 1, 823756, 9.19, 45.4642, 'disponibile', 0),
@@ -106,7 +106,7 @@ INSERT INTO `bicicletta` (`ID`, `IDstazione`, `RFID`, `longi`, `lat`, `stato`, `
 (67, 1, 928458, 9.185, 45.4668, 'Manutenzione', 0),
 (68, 1, 923859, 9.1851, 45.4669, 'disponibile', 0),
 (69, 1, 923480, 9.2343, 45.4824, 'disponibile', 0),
-(70, 1, 927468, 9.2344, 45.4825, 'noleggiata', 1000),
+(70, 1, 927468, 9.2364, 45.4835, 'noleggiata', 11533),
 (71, 1, 923962, 9.1905, 45.4654, 'disponibile', 0),
 (72, 1, 123463, 9.1906, 45.4655, 'disponibile', 0),
 (73, 1, 1523456, 9.19, 45.4642, 'disponibile', 0),
@@ -114,7 +114,7 @@ INSERT INTO `bicicletta` (`ID`, `IDstazione`, `RFID`, `longi`, `lat`, `stato`, `
 (75, 1, 125358, 9.185, 45.4668, 'Manutenzione', 0),
 (76, 1, 923459, 9.1851, 45.4669, 'disponibile', 0),
 (77, 1, 923660, 9.2343, 45.4824, 'disponibile', 0),
-(78, 1, 923661, 9.2344, 45.4825, 'noleggiata', 1000),
+(78, 1, 923661, 9.2339, 45.4844, 'noleggiata', 11323),
 (79, 1, 926462, 9.1905, 45.4654, 'disponibile', 0),
 (80, 1, 926463, 9.1906, 45.4655, 'disponibile', 0),
 (81, 1, 926456, 9.19, 45.4642, 'disponibile', 0),
@@ -122,9 +122,13 @@ INSERT INTO `bicicletta` (`ID`, `IDstazione`, `RFID`, `longi`, `lat`, `stato`, `
 (83, 1, 626458, 9.185, 45.4668, 'Manutenzione', 0),
 (84, 1, 623659, 9.1851, 45.4669, 'disponibile', 0),
 (85, 1, 623660, 9.2343, 45.4824, 'disponibile', 0),
-(86, 1, 963461, 9.2344, 45.4825, 'noleggiata', 1000),
+(86, 1, 963461, 9.235, 45.4831, 'noleggiata', 11256),
 (87, 1, 926462, 9.1905, 45.4654, 'disponibile', 0),
-(88, 1, 923663, 9.1906, 45.4655, 'disponibile', 0);
+(88, 1, 923663, 9.1906, 45.4655, 'disponibile', 0),
+(89, 1, 1, 9.19, 45.4642, 'Manutenzione', 0),
+(90, 1, 1, 9.19, 45.4642, 'Manutenzione', 0),
+(91, 1, 1, 9.19, 45.4642, 'Manutenzione', 0),
+(92, 1, 1, 9.19, 45.4642, 'disponibile', 0);
 
 -- --------------------------------------------------------
 
@@ -210,12 +214,20 @@ INSERT INTO `localita` (`ID`, `via`, `citta`, `cap`, `provincia`) VALUES
 
 CREATE TABLE `operazione` (
   `ID` int(11) NOT NULL,
-  `IDbicicletta` int(11) NOT NULL,
-  `IDcliente` int(11) NOT NULL,
-  `dataInizio` datetime NOT NULL,
-  `dataFine` datetime NOT NULL,
-  `tipoOperazione` enum('noleggio','riconsegna','','') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `IDcliente` int(11) DEFAULT NULL,
+  `IDbicicletta` int(11) DEFAULT NULL,
+  `tipoOperazione` enum('noleggio','restituzione') DEFAULT NULL,
+  `dataOperazione` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `operazione`
+--
+
+INSERT INTO `operazione` (`ID`, `IDcliente`, `IDbicicletta`, `tipoOperazione`, `dataOperazione`) VALUES
+(2, 8, 4, 'noleggio', '2024-05-21 07:20:52'),
+(3, 8, 4, 'noleggio', '2024-05-21 07:24:50'),
+(4, 8, 4, '', '2024-05-21 07:25:10');
 
 -- --------------------------------------------------------
 
@@ -237,7 +249,7 @@ CREATE TABLE `stazione` (
 --
 
 INSERT INTO `stazione` (`ID`, `nome`, `slotTotali`, `longi`, `lat`, `altro`) VALUES
-(1, 'Stazione Milano', 30, 9.19, 45.4642, 'Vicino alla stazione centrale'),
+(1, 'Stazione Milano', 28, 9.19, 45.4642, 'Vicino alla stazione centrale'),
 (2, 'Parco Milano', 20, 9.185, 45.4668, 'Parco pubblico'),
 (3, 'Citta Studi Milano', 25, 9.2343, 45.4824, 'Zona universitaria'),
 (4, 'Centro Milano', 40, 9.1905, 45.4654, 'Piazza del Duomo');
@@ -262,7 +274,8 @@ CREATE TABLE `transizioni` (
 
 INSERT INTO `transizioni` (`ID`, `IDcliente`, `TipoTransizione`, `importo`, `motivo`) VALUES
 (1, 1, 'pagamento', 5, 'noleggio bicicletta'),
-(2, 2, 'pagamento', 7, 'noleggio bicicletta');
+(2, 2, 'pagamento', 7, 'noleggio bicicletta'),
+(3, 8, 'pagamento', 0, 'noleggio bici');
 
 -- --------------------------------------------------------
 
@@ -277,16 +290,18 @@ CREATE TABLE `utente` (
   `email` varchar(32) NOT NULL,
   `numTel` int(11) NOT NULL,
   `isAdmin` int(11) NOT NULL,
-  `IDlocalita` int(11) NOT NULL
+  `IDlocalita` int(11) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `username` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`ID`, `nome`, `cognome`, `email`, `numTel`, `isAdmin`, `IDlocalita`) VALUES
-(1, 'Admin', 'User', 'admin@example.com', 2147483647, 1, 1),
-(2, 'Regular', 'User', 'user@example.com', 2147483647, 0, 2);
+INSERT INTO `utente` (`ID`, `nome`, `cognome`, `email`, `numTel`, `isAdmin`, `IDlocalita`, `password`, `username`) VALUES
+(1, 'admin', 'User', 'admin@example.com', 2147483647, 1, 1, '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(2, 'Regular', 'User', 'user@example.com', 2147483647, 0, 2, 'ee11cbb19052e40b07aac0ca060c23ee', 'user');
 
 --
 -- Indici per le tabelle scaricate
@@ -317,8 +332,8 @@ ALTER TABLE `localita`
 --
 ALTER TABLE `operazione`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `IDbicicletta` (`IDbicicletta`,`IDcliente`),
-  ADD KEY `IDcliente` (`IDcliente`);
+  ADD KEY `IDcliente` (`IDcliente`),
+  ADD KEY `IDbicicletta` (`IDbicicletta`);
 
 --
 -- Indici per le tabelle `stazione`
@@ -348,7 +363,7 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `bicicletta`
 --
 ALTER TABLE `bicicletta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT per la tabella `cliente`
@@ -366,7 +381,7 @@ ALTER TABLE `localita`
 -- AUTO_INCREMENT per la tabella `operazione`
 --
 ALTER TABLE `operazione`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `stazione`
@@ -378,7 +393,7 @@ ALTER TABLE `stazione`
 -- AUTO_INCREMENT per la tabella `transizioni`
 --
 ALTER TABLE `transizioni`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
@@ -406,8 +421,8 @@ ALTER TABLE `cliente`
 -- Limiti per la tabella `operazione`
 --
 ALTER TABLE `operazione`
-  ADD CONSTRAINT `operazione_ibfk_1` FOREIGN KEY (`IDbicicletta`) REFERENCES `bicicletta` (`ID`),
-  ADD CONSTRAINT `operazione_ibfk_2` FOREIGN KEY (`IDcliente`) REFERENCES `cliente` (`ID`);
+  ADD CONSTRAINT `operazione_ibfk_1` FOREIGN KEY (`IDcliente`) REFERENCES `cliente` (`ID`),
+  ADD CONSTRAINT `operazione_ibfk_2` FOREIGN KEY (`IDbicicletta`) REFERENCES `bicicletta` (`ID`);
 
 --
 -- Limiti per la tabella `transizioni`

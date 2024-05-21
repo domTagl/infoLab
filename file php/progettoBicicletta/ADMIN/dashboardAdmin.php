@@ -8,7 +8,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
- 
+    function BICISTAZIONE() {
+        window.location.href = "visualizzaStazioniBiciclette.php"; 
+    };
+
     function aggiungiStazione() {
         window.location.href = "stazione/aggiungiStazione.php"; 
     };
@@ -40,6 +43,9 @@
     };
 </script>
 <div class="container">
+
+<h1>MAPPA BICI/STAZIONE</h1>
+<br><button type="button" onclick="BICISTAZIONE()">MAPPA BICI/STAZIONE</button>
 
 <h1>STAZIONE</h1>
 <br><button type="button" onclick="aggiungiStazione()">aggiungi Stazione</button>
