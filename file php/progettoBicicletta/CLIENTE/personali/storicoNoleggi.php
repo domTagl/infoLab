@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Storico Noleggi</title>
     <link rel="stylesheet" href="../../css/style2.css">
+    <link rel="stylesheet" href="../../css/style3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>

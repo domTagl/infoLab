@@ -8,6 +8,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
+    //controllo sessione
+    $( document ).ready(function() {
+        $.post("../session/getSession.php", {}, function (data) {
+            console.log("ciaoioo");
+            console.log(data);
+        });
+        
+        $.post("../session/controlloSessioneDipendente.php", {}, function (data) {
+            console.log(data);
+            if(data == 404){
+                window.location.href = "../index.php"; 
+            }
+        });
+    });
+
     function BICISTAZIONE() {
         window.location.href = "visualizzaStazioniBiciclette.php"; 
     };
@@ -41,10 +56,20 @@
     function modificaBicicletta() {
         window.location.href = "bicicletta/modificaBicicletta.php"; 
     };
+    function informazioniBicicletta() {
+        window.location.href = "bicicletta/informazioniBicicletta.php"; 
+    };
+
+    function statisticheBici() {
+        window.location.href = "biciNoleggiate.php"; 
+    };
+    function statisticheCliente() {
+        window.location.href = "statisticheClienti.php"; 
+    };
 </script>
 <div class="container">
 
-<h1>MAPPA BICI/STAZIONE</h1>
+<h1>MAPPA BICI/STAZIONE in tempo reale</h1>
 <br><button type="button" onclick="BICISTAZIONE()">MAPPA BICI/STAZIONE</button>
 
 <h1>STAZIONE</h1>
@@ -61,6 +86,17 @@
 <br><button type="button" onclick="aggiungiBicicletta()">aggiungi Bicicletta</button>
 <br><button type="button" onclick="rimuoviBicicletta()">rimuovi Bicicletta</button>
 <br><button type="button" onclick="modificaBicicletta()">modifica Bicicletta</button>
+<br><button type="button" onclick="informazioniBicicletta()">informazioni di tutte le biciclette</button>
+
+<h1>STATISTICHE VARIE BICI/CLIENTI</h1>
+<br><button type="button" onclick="statisticheBici()">statistiche bici (tipo bici noleggiate da più di un gg)</button>
+<br><button type="button" onclick="statisticheCliente()">statistiche cliente</button>
+
+<nav>
+    <ul>
+        <li><a href="../session/logout.php?redirect=../index.php">LOGOUT</a></li>
+    </ul>
+</nav>
 
 <p id="responseMessage"></p>
 </div>

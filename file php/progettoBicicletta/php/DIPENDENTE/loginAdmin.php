@@ -22,7 +22,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $mysqli = new mysqli($ip, $root, $psw, $nome);
 
     // Controllo credenziali dell'admin
-    $stmt = $mysqli->prepare("SELECT * FROM `utente` WHERE username=? AND password=? AND isAdmin=1");
+    $stmt = $mysqli->prepare("SELECT * FROM `utente` WHERE username=? AND password=? AND isAdmin=0");
     $stmt->bind_param("ss", $username, $Password);
     $stmt->execute();
     $result = $stmt->get_result();

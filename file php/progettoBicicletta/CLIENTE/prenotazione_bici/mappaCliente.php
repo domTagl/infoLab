@@ -17,6 +17,11 @@
 
     //controllo sessione
     $( document ).ready(function() {
+        $.post("../../session/getSession.php", {}, function (data) {
+            console.log("ciaoioo");
+            console.log(data);
+        });
+        
         $.post("../../session/controlloSessioneCliente.php", {}, function (data) {
             console.log(data);
             if(data == 404){
@@ -83,13 +88,22 @@
         window.location.href = "../personali/aggiornaProfilo.php";
     }
 
+    function statisticheProfilo() {
+        window.location.href = "../personali/statisticheProfilo.php";
+    }
+
     // Inizializza la mappa quando il DOM è completamente caricato
     document.addEventListener('DOMContentLoaded', function () {
         initializeMap();
     });
 </script>
 
-<h2>Dashboard Cliente</h2>
+<h2>Dashboard Cliente</h2> 
+<nav>
+    <ul>
+        <li><a href="../../session/logout.php?redirect=../index.php">LOGOUT</a></li>
+    </ul>
+</nav>
 
 <div id="map" style="height: 400px; width: 100%;"></div>
 
@@ -97,15 +111,23 @@
     <div>
         <button onclick="effettuaPrenotazione()">Scegli una stazione ed effettuare una prenotazione</button><br>
         <button onclick="visualizzaStorico()">Visualizzare lo storico dei noleggi effettuati</button><br>
-        <button onclick="aggiornaProfilo()">Aggiornare le informazioni del profilo utente</button>
+        <button onclick="aggiornaProfilo()">Aggiornare le informazioni del profilo utente</button><br>
+        <button onclick="statisticheProfilo()">Tutte le tue statistiche riguardante te</button>
     </div>
-</div>
+<br>
 
+
+
+<h2>INFORMAZIONI STAZIONE: (click market poi scorri in basso)</h2>
+</div>
 <div class="container">
     <div id="infoStazione">
         <!-- Qui verranno visualizzate le informazioni sulla stazione -->
     </div>
 </div>
+
+
+
 
 </body>
 </html>

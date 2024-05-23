@@ -14,6 +14,14 @@
 </head>
 <body>
 <script>
+    //controllo sessione
+    $( document ).ready(function() {
+        $.post("session/getSession.php", {}, function (data) {
+            console.log(data);
+        });
+    });
+
+
     var map; // Dichiarazione globale della variabile map
 
     function inizializzaMappa() {
@@ -49,8 +57,12 @@
         window.location.href = "CLIENTE/loginCliente.php";
     }
 
-    function loginDipendente() {
+    function loginAdmin() {
         window.location.href = "ADMIN/loginAdmin.php";
+    }
+
+    function loginDipendente() {
+        window.location.href = "DIPENDENTE/loginDipendente.php";
     }
 
     function TORRETTA() {
@@ -58,7 +70,7 @@
     }
 </script>
 
-<h2>Dashboard Cliente</h2>
+<h2>Dashboard</h2>
 
 <div id="map" style="height: 400px; width: 100%;"></div>
 
@@ -66,8 +78,9 @@
     <div>
         <button class="button button-login-cliente" onclick="loginCliente()">Login Cliente, così puoi usufruire del servizio!</button>
         <br>
+        <button class="button button-login-dipendente" onclick="loginAdmin()">Login Admin</button>
+        <br>
         <button class="button button-login-dipendente" onclick="loginDipendente()">Login Dipendente</button>
-
     </div>
 </div>
 

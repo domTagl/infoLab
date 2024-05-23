@@ -6,13 +6,19 @@
     <link rel="stylesheet" href="../../css/style.css"> <!-- Aggiungi il tuo stile CSS qui -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+    //ovviamente nella realta non sarà la "torretta"
+    //ad muovere le biciclette ma sarà 
+    //il cliente ad andarci in giro
+    //comunque c'è ws per fare anche ciò ../aggiornaPosizioneBiciGPS.php
+
+    //METTERE 300000 30sec al posto di 1sec
     setInterval(function() {
         $.post("../aggiornaPosizioneBici.php", function(data) {
             console.log("Posizione biciclette aggiornata");
         });
     }, 30000);
 
-    //METTERE 300000 30sec al posto di 1sec
+
 </script>
 </head>
 <body>

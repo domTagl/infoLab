@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 21, 2024 alle 09:42
+-- Creato il: Mag 23, 2024 alle 19:45
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -158,7 +158,7 @@ INSERT INTO `cliente` (`ID`, `IDlocalita`, `nome`, `cognome`, `numTelefono`, `em
 (3, 3, 'Giulia', 'Verdi', 2147483647, 'giulia.verdi@example.com', 2147483647, '819b0643d6b89dc9b579fdfc9094f28e', 2),
 (4, 4, 'Anna', 'Neri', 2147483647, 'anna.neri@example.com', 2147483647, '34cc93ece0ba9e3f6f235d4af979b16c', 22),
 (7, 6, 'b', 'b', 0, 'b@gma.c', 0, '$2y$10$FTZBawfcRsCytqQUCESHDez2X', 222),
-(8, 7, 'a', 'a', 0, 'a', 0, '0cc175b9c0f1b6a831c399e269772661', 3),
+(8, 7, 'a', 'a', 0, 'a', 2147483647, '0cc175b9c0f1b6a831c399e269772661', 3),
 (9, 8, 'c', 'c', 0, 'c', 0, '4a8a08f09d37b73795649038408b5f33', 33),
 (10, 9, 'd', 'd', 0, 'd', 0, '8277e0910d750195b448797616e091ad', 333),
 (11, 10, 'd', 'd', 0, 'd', 0, '8277e0910d750195b448797616e091ad', 4),
@@ -169,6 +169,25 @@ INSERT INTO `cliente` (`ID`, `IDlocalita`, `nome`, `cognome`, `numTelefono`, `em
 (16, 15, 'p', 'p', 0, 'p', 0, '83878c91171338902e0fe0fb97a8c47a', 6),
 (17, 16, 'u', 'u', 0, 'u', 0, '7b774effe4a349c6dd82ad4f4f21d34c', 7),
 (18, 17, 'q', 'q', 0, 'q', 0, '7694f4a66316e53c8cdd9d9954bd611d', 77);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `codici_manutenzione`
+--
+
+CREATE TABLE `codici_manutenzione` (
+  `ID` int(11) NOT NULL,
+  `codice` varchar(50) DEFAULT NULL,
+  `IDutente` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `codici_manutenzione`
+--
+
+INSERT INTO `codici_manutenzione` (`ID`, `codice`, `IDutente`) VALUES
+(1, 'codiceManutenzioneYGFOUI87897YFDA534G', 2);
 
 -- --------------------------------------------------------
 
@@ -257,6 +276,20 @@ INSERT INTO `stazione` (`ID`, `nome`, `slotTotali`, `longi`, `lat`, `altro`) VAL
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `storico_manutenzioni`
+--
+
+CREATE TABLE `storico_manutenzioni` (
+  `id` int(11) NOT NULL,
+  `IDutente` int(11) DEFAULT NULL,
+  `IDstazione` int(11) DEFAULT NULL,
+  `RFID` varchar(50) DEFAULT NULL,
+  `data_manutenzione` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `transizioni`
 --
 
@@ -322,6 +355,12 @@ ALTER TABLE `cliente`
   ADD KEY `IDlocalita` (`IDlocalita`);
 
 --
+-- Indici per le tabelle `codici_manutenzione`
+--
+ALTER TABLE `codici_manutenzione`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indici per le tabelle `localita`
 --
 ALTER TABLE `localita`
@@ -340,6 +379,12 @@ ALTER TABLE `operazione`
 --
 ALTER TABLE `stazione`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indici per le tabelle `storico_manutenzioni`
+--
+ALTER TABLE `storico_manutenzioni`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `transizioni`
@@ -372,6 +417,12 @@ ALTER TABLE `cliente`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT per la tabella `codici_manutenzione`
+--
+ALTER TABLE `codici_manutenzione`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT per la tabella `localita`
 --
 ALTER TABLE `localita`
@@ -388,6 +439,12 @@ ALTER TABLE `operazione`
 --
 ALTER TABLE `stazione`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT per la tabella `storico_manutenzioni`
+--
+ALTER TABLE `storico_manutenzioni`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `transizioni`

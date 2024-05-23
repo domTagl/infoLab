@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Visualizza Stazioni e Biciclette</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="../css/style3.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <style>
         #map {
             height: 600px;
@@ -18,6 +20,12 @@
         <h1>Stazioni e Biciclette in Tempo Reale</h1>
     </div>
     <div id="map"></div>
+    <div class="container">
+    <h3>click su bici per vedere dettagli (i colori rappresentano lo stato della bici)<br>
+    rosso -> noleggiata<br>
+    verde -> disponibile<br>
+    grigia -> manutenzione<br>    </div>
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
