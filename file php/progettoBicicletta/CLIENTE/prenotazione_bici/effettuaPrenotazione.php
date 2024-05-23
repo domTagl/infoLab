@@ -34,7 +34,20 @@
     </div>
     </div>
     <script>
-        $(document).ready(function() {
+            $(document).ready(function() {
+            $.post("../../session/getSession.php", {}, function (data) {
+                console.log("ciaoioo");
+                console.log(data);
+            });
+            
+            $.post("../../session/controlloSessioneCliente.php", {}, function (data) {
+                console.log(data);
+                if(data == 404){
+                    window.location.href = "../../index.php"; 
+                }
+            });
+
+
             var stazione = "<?php echo $_GET['stazione']; ?>";
             
             // Ottiene i dati dei posti bici disponibili

@@ -3,11 +3,14 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if($_SESSION["IDutente"] == null){
+if(!isset($_SESSION["IDutente"])){
     echo 404;
+    exit;
 }
-if($_SESSION["utente"] == null){
+if(!isset($_SESSION["utente"])){
     echo 404;
+    exit;
 }
 echo 200;
+exit;
 ?>

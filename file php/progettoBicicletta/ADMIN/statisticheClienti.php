@@ -27,6 +27,18 @@ if (!isset($_SESSION['admin']) || $_SESSION['IDadmin'] != 1) {
 
     <script>
         $(document).ready(function() {
+            $.post("../session/getSession.php", {}, function (data) {
+            console.log("ciaoioo");
+            console.log(data);
+        });
+        
+        $.post("../session/controlloSessioneDipendente.php", {}, function (data) {
+            console.log(data);
+            if(data == 404){
+                window.location.href = "../index.php"; 
+            }
+        });
+        
             $.post("../php/ADMIN/getStatisticheClienti.php", {}, function(data) {
                 $('#statisticheClienti').html(data);
             }).fail(function(xhr, status, error) {

@@ -39,6 +39,22 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistiche Noleggi</title>
     <link rel="stylesheet" href="../../css/style3.css">
+    <script>
+    //controllo sessione
+    $( document ).ready(function() {
+            $.post("../../session/getSession.php", {}, function (data) {
+                console.log("ciaoioo");
+                console.log(data);
+            });
+            
+            $.post("../../session/controlloSessioneCliente.php", {}, function (data) {
+                console.log(data);
+                if(data == 404){
+                    window.location.href = "../../index.php"; 
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">

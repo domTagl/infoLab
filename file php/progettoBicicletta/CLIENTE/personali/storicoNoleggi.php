@@ -28,6 +28,18 @@
 
     <script>
         $(document).ready(function() {
+            $.post("../../session/getSession.php", {}, function (data) {
+                console.log("ciaoioo");
+                console.log(data);
+            });
+            
+            $.post("../../session/controlloSessioneCliente.php", {}, function (data) {
+                console.log(data);
+                if(data == 404){
+                    window.location.href = "../../index.php"; 
+                }
+            });
+            
             $.ajax({
                 url: "../../php/CLIENTE/storicoNoleggi.php",
                 method: "GET",

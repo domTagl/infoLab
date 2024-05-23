@@ -51,9 +51,9 @@
 </div>
     <script>
         $(document).ready(function() {
-            $.post("session/controlloSessioneCliente.php", {}, function (data) {
+            $.post("../../session/controlloSessioneCliente.php", {}, function (data) {
                 if(data == 404){
-                    window.location.href = "index.php"; 
+                    window.location.href = "../../index.php"; 
                 }
             });
 
@@ -61,7 +61,7 @@
                 event.preventDefault();
                 var formData = $(this).serialize();
 
-                $.post("php/aggiornaProfilo.php", formData, function(data) {
+                $.post("../../php/aggiornaProfilo.php", formData, function(data) {
                     alert(data.messaggio);
                 }, 'json').fail(function(xhr, status, error) {
                     alert('Errore durante l\'aggiornamento del profilo.');

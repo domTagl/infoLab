@@ -28,6 +28,17 @@ if (!isset($_SESSION['admin']) || !isset($_SESSION['IDadmin'])) {
 
     <script>
         $(document).ready(function() {
+            $.post("../../session/getSession.php", {}, function (data) {
+            console.log("ciaoioo");
+            console.log(data);
+        });
+        
+        $.post("../../session/controlloSessioneDipendente.php", {}, function (data) {
+            console.log(data);
+            if(data == 404){
+                window.location.href = "../../index.php"; 
+            }
+        });
             $.post("../../php/ADMIN/getBiciclette.php", {}, function(data) {
                 $('#biciclette').html(data);
             }).fail(function(xhr, status, error) {

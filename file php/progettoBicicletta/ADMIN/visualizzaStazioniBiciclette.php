@@ -107,6 +107,18 @@
         }
 
         $(document).ready(function() {
+            $.post("../session/getSession.php", {}, function (data) {
+            console.log("ciaoioo");
+            console.log(data);
+        });
+        
+        $.post("../session/controlloSessioneDipendente.php", {}, function (data) {
+            console.log(data);
+            if(data == 404){
+                window.location.href = "../index.php"; 
+            }
+        });
+        
             initializeMap();
             setInterval(updateMarkers, 30000); // Aggiorna ogni 30 secondi
         });

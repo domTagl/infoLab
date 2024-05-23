@@ -25,7 +25,7 @@
         $(document).ready(function() {
             $.post("../../session/controlloSessioneCliente.php", {}, function (data) {
                 if(data == 404){
-                    window.location.href = "index.php"; 
+                    window.location.href = "../../index.php"; 
                 }
             });
 
